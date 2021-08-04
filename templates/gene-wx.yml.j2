@@ -1,0 +1,52 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: gene-wx
+  labels:
+    app: gene-wx
+spec:
+  type: ClusterIP
+  ports:
+    - name: http
+      port: 80
+      targetPort: 80
+  selector:
+    app: gene-wx
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gene-wx
+  labels:
+    app: gene-wx
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gene-wx
+  minReadySeconds: 10
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  template:
+    metadata:
+      labels:
+        app: gene-wx
+    spec:
+      restartPolicy: Always
+      containers:
+        - name: gene-wx
+          image: "{{ gene_image }}"
+          ports:
+            - name: http
+              containerPort: 80
+          resources:
+            limits:
+              cpu: "1000m"
+              memory: "1Gi"
+            requests:
+              cpu: "10m"
+              memory: "32Mi"

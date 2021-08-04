@@ -1,0 +1,21 @@
+---
+# tasks file for ansible-bestnovo
+- name: Namespace for bestnovo
+  community.kubernetes.k8s:
+    state: "{{ bestnovo_state }}"
+    name: "{{ bestnovo_namespace }}"
+    api_version: v1
+    kind: Namespace
+
+- name: bestnovo service
+  community.kubernetes.k8s:
+    state: "{{ bestnovo_state }}"
+    namespace: "{{ bestnovo_namespace }}"
+    template: "{{ item }}"
+  with_items:
+    - admin.yml.j2
+    - core.yml.j2
+    - gene-wx.yml.j2
+    - ingress.yml.j2
+  tags:
+    - adv-tech

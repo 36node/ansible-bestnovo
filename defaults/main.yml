@@ -1,0 +1,24 @@
+---
+# defaults file for ansible-bestnovo
+namespace: bestnovo
+state: present
+
+ingress_name: bestnovo
+
+mongodb_connection: mongodb://root:it_is_a_secret@mongodb
+
+admin_version: latest
+admin_image: "registry.cn-hongkong.aliyuncs.com/bestnovo/datacenter-admin:{{ admin_version }}"
+admin_time: 20210804120000
+admin_health_path: /
+
+core_version: latest
+core_image: "registry.cn-hongkong.aliyuncs.com/36node/bestnovo-api:{{ core_version }}"
+core_time: 20210804120000
+core_port: "80"
+core_path: /bestnovo/v1
+core_mongodb_connection: "{{ mongodb_connection }}/core?authSource=admin"
+core_health_path: /bestnovo/v1/health
+
+gene_version: latest
+gene_image: "registry.cn-hongkong.aliyuncs.com/36node/bestnovo-gene-wx:{{ gene_version }}"
