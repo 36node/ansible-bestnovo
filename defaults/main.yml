@@ -1,9 +1,13 @@
 ---
-# defaults file for ansible-bestnovo
+# defaults file for bestnovo
 namespace: bestnovo
 state: present
 
+bestnovo_state: "{{ state }}"
+bestnovo_namespace: "{{ namespace }}"
+
 ingress_name: bestnovo
+domain: 36node.com
 
 mongodb_connection: mongodb://root:it_is_a_secret@mongodb
 
@@ -22,3 +26,18 @@ core_health_path: /bestnovo/v1/health
 
 gene_version: latest
 gene_image: "registry.cn-hongkong.aliyuncs.com/36node/bestnovo-gene-wx:{{ gene_version }}"
+gene_time: 20210804120000
+
+auth_version: latest
+auth_image: "registry.ap-southeast-1.aliyuncs.com/36node/auth:{{ auth_version }}"
+auth_time: 20210804120000
+auth_port: "80"
+auth_path: /auth/v1
+auth_mongodb_connection: "{{ mongodb_connection }}/auth?authSource=admin"
+auth_jwt_public_key: "-----BEGIN PUBLIC KEY-----\nMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCNdgZPtvnjWnyCxWfIzCrNqFR7\nlOXKl6xag5AB+6j9RRR3ZQXMEKvl/1wjZcMuxb5rs+u5HuJaf4LXmYszhpqUuALj\nGAbSPZZ+awoTvAdyd93iMoK0mh+B+7xkxkQ8bApqQ0q7UYBMb4vyQ/tWX0ubg9wb\nYXzLj7IbGhnyVDLNcQIDAQAB\n-----END PUBLIC KEY-----"
+auth_cos_qiniu: "QINIU"
+auth_cos_qiniu_bucket: "36node-static"
+auth_cos_qiniu_access_key: "MXCPROPXtJtGScMfXCjAE1G"
+auth_cos_qiniu_secret_key: "gBLePFrWJXOeQ9F8hwR_jR4hPdF0BcOAoCAzUyk5"
+auth_cos_qiniu_domain: "static.36node.com"
+auth_health_path: /auth/v1/health

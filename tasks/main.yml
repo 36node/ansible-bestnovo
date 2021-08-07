@@ -1,5 +1,5 @@
 ---
-# tasks file for ansible-bestnovo
+# tasks file for bestnovo
 - name: Namespace for bestnovo
   community.kubernetes.k8s:
     state: "{{ bestnovo_state }}"
@@ -16,6 +16,7 @@
     - admin.yml.j2
     - core.yml.j2
     - gene-wx.yml.j2
+    - auth.yml.j2
     - ingress.yml.j2
   tags:
-    - adv-tech
+    - bestnovo

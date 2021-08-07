@@ -8,36 +8,36 @@ metadata:
     cert-manager.io/cluster-issuer: "{{ cert_issuer }}"
 spec:
   rules:
-    - host: bestnovo.36node.com
+    - host: bestnovo.{{ domain }}
       http:
         paths:
           - backend:
-              serviceName: bestnovo-admin
+              serviceName: admin
               servicePort: 80
             path: /
-    - host: bestnovo.36node.com
+    - host: bestnovo.{{ domain }}
       http:
         paths:
           - backend:
-              serviceName: bestnovo-auth
+              serviceName: auth
               servicePort: 80
-            path: /auth
-    - host: bestnovo.36node.com
+            path: "{{ auth_path }}"
+    - host: bestnovo.{{ domain }}
       http:
         paths:
           - backend:
-              serviceName: bestnovo-core
+              serviceName: core
               servicePort: 80
-            path: /bestnovo
-    - host: bestnovo-gene-wx.36node.com
+            path: "{{ core_path }}"
+    - host: bestnovo-gene-wx.{{ domain }}
       http:
         paths:
           - backend:
-              serviceName: bestnovo-gene-wx
+              serviceName: gene-wx
               servicePort: 80
             path: /
-  tls:
-    - hosts:
-        - bestnovo.36node.com
-        - bestnovo-gene-wx.36node.com
-      secretName: 36node.com
+  # tls:
+  #   - hosts:
+  #       - bestnovo.{{ domain }}
+  #       - bestnovo-gene-wx.{{ domain }}
+  #     secretName: { { domain } }

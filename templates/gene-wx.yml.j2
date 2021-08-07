@@ -40,6 +40,9 @@ spec:
       containers:
         - name: gene-wx
           image: "{{ gene_image }}"
+          env:
+            - name: DEPLOY_TIME
+              value: "{{ gene_time }}"
           ports:
             - name: http
               containerPort: 80
