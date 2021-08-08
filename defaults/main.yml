@@ -37,7 +37,7 @@ auth_mongodb_connection: "{{ mongodb_connection }}/auth?authSource=admin"
 auth_jwt_public_key: "-----BEGIN PUBLIC KEY-----\nMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCNdgZPtvnjWnyCxWfIzCrNqFR7\nlOXKl6xag5AB+6j9RRR3ZQXMEKvl/1wjZcMuxb5rs+u5HuJaf4LXmYszhpqUuALj\nGAbSPZZ+awoTvAdyd93iMoK0mh+B+7xkxkQ8bApqQ0q7UYBMb4vyQ/tWX0ubg9wb\nYXzLj7IbGhnyVDLNcQIDAQAB\n-----END PUBLIC KEY-----"
 auth_cos_qiniu: "QINIU"
 auth_cos_qiniu_bucket: "36node-static"
-auth_cos_qiniu_access_key: "MXCPROPXtJtGScMfXCjAE1G"
+auth_cos_qiniu_access_key: "OdW0YX2wyHpMrwmj-MXCPROPXtJtGScMfXCjAE1G"
 auth_cos_qiniu_secret_key: "gBLePFrWJXOeQ9F8hwR_jR4hPdF0BcOAoCAzUyk5"
 auth_cos_qiniu_domain: "static.36node.com"
 auth_health_path: /auth/v1/health

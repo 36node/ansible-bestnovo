@@ -36,8 +36,8 @@ spec:
               serviceName: gene-wx
               servicePort: 80
             path: /
-  # tls:
-  #   - hosts:
-  #       - bestnovo.{{ domain }}
-  #       - bestnovo-gene-wx.{{ domain }}
-  #     secretName: { { domain } }
+  tls:
+    - hosts:
+        - "bestnovo.{{ domain }}"
+        - "bestnovo-gene-wx.{{ domain }}"
+      secretName: "{{ domain }}"
